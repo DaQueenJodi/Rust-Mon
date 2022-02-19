@@ -1,0 +1,32 @@
+{
+  "mons": [
+    {
+      "health": 5,
+      "pp": 1,
+      "name": "Balls",
+      "mon_type": {
+        "MonType": "Fire"
+      },
+      "possible_moves": [
+        "Move 1",
+        "Move 2",
+        "Move 3"
+      ]
+    },
+    {
+      
+      "health": 30,
+      "pp": 10,
+      "name": "Penis",
+      "mon_type": {
+        "MonType": "Water"
+      },
+      "possible_moves": [
+        "Dick",
+        "Cunt",
+        "Bruh",
+        "Shit"
+      ]
+    }
+  ]
+}
