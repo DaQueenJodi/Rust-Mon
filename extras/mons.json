@@ -2,31 +2,57 @@
   "mons": [
     {
       "health": 5,
-      "pp": 1,
+      "max_health": 5,
+      "pp": 10,
+      "max_pp": 10,
       "name": "Balls",
+      "level": 1,
+      "debuffs": [],
+      "buffs": [],
       "mon_type": {
         "MonType": "Fire"
       },
       "possible_moves": [
-        "Move 1",
-        "Move 2",
-        "Move 3"
-      ]
+        "Ba",
+        "lls",
+        "Benis"
+      ],
+      "immunities": [
+        {
+          "Buff": "Speed"
+        },
+        {
+          "Debuff": "Poison"
+        }
+      ],
+      "moves": []
     },
     {
-      
-      "health": 30,
+      "health": 5,
+      "max_health": 5,
       "pp": 10,
-      "name": "Penis",
+      "max_pp": 10,
+      "name": "Balls",
+      "level": 1,
+      "debuffs": [],
+      "buffs": [],
       "mon_type": {
-        "MonType": "Water"
+        "MonType": "Fire"
       },
       "possible_moves": [
-        "Dick",
-        "Cunt",
-        "Bruh",
-        "Shit"
-      ]
+        "Ba",
+        "lls",
+        "Benis"
+      ],
+      "immunities": [
+        {
+          "Buff": "Speed"
+        },
+        {
+          "Debuff": "Poison"
+        }
+      ],
+      "moves": []
     }
   ]
 }
