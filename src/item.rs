@@ -73,7 +73,7 @@ impl Bag {
     pub fn new() -> Bag {
         Bag {
             items: vec![],
-            available_mons: vec![Game::read_specific_mon("Balls").unwrap()],
+            available_mons: vec![Game::read_specific_mon("Balls".to_owned()).unwrap()],
             balls: DEFAULT_BALLS,
         }
     }

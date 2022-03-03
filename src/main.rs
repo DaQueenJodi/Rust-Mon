@@ -24,11 +24,14 @@ const MOVE_JSON: &str = "extras/moves.json";
 const DEFAULT_BALLS: i32 = 2;
 
 #[derive(Serialize, Deserialize, Debug)]
-struct MonJson {
-    mons: Vec<Mon>,
+pub struct MonJson {
+    pub mons: Vec<Mon>,
+}
+#[derive(Serialize, Deserialize, Debug)]
+pub struct MoveJson {
+    pub moves: Vec<MonMove>,
 }
 
-impl Error for MonJson {}
 impl fmt::Display for MonJson {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "Could not properly parse json")
@@ -40,6 +43,7 @@ impl fmt::Display for MonJson {
 //}
 fn main() {
     let mut game = Game::new();
+    game.bag.available_mons[0].learn_move_auto();
     println!("Welcome to rust-mon");
     //    println!("This is your new mon: {:?}", game.player_mon);
     //    println!("This is your enemy's mon: {:?}", game.enemy_mon);

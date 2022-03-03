@@ -1,0 +1,11 @@
+{
+  "moves": [
+    {
+      "name": "Ba",
+      "pp_cost": 10,
+      "hp_cost": 0,
+      "damage": 5,
+      "effect": "Nothing"
+    }
+  ]
+}

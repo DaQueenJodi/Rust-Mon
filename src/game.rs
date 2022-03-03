@@ -1,8 +1,8 @@
 use crate::*;
-use serde_json::Value;
+//use serde_json::Value;
 use std::fs;
 use std::io::Write;
-use std::io::{self, Error};
+use std::io;
 
 pub struct Game {
     pub player_mon: Mon,
@@ -16,7 +16,7 @@ pub struct Game {
 }
 
 impl Game {
-    pub fn read_specific_mon(name: &str) -> Result<Mon, String> {
+    pub fn read_specific_mon(name: String) -> Result<Mon, String> {
         let file = fs::File::open(MON_JSON).expect("Could not open MONS_JSON");
         let js: MonJson = serde_json::from_reader(file).unwrap();
         for i in js.mons {
@@ -24,7 +24,17 @@ impl Game {
                 return Ok(i);
             }
         }
-        return Err("welp".to_owned());
+        return Err(format!("Mon named {} was not found in json file", name));
+    }
+    pub fn read_specific_move(name: String) -> Result<MonMove, String> {
+        let file = fs::File::open(MOVE_JSON).expect("Could not open MOVE_JSON file");
+        let js: MoveJson = serde_json::from_reader(file).unwrap();
+        for i in js.moves {
+            if i.name == name {
+                return Ok(i);
+            }
+        }
+        return Err(format!("Move named {} was not found in json file", name));
     }
     pub fn read_random_mon(&mut self) -> Mon {
         let js_str = std::fs::read_to_string(MON_JSON).unwrap();
@@ -51,7 +61,7 @@ impl Game {
             println!("What Mon do you want?: ");
             let x = 1; // start counting at 1
             for i in self.bag.available_mons.iter() {
-                print!("{}: {}", x, i.name);
+                println!("{}: {}", x, i.name);
             }
             let prompt = &mut String::new();
             io::stdout().flush().expect("Could not flush buffer");
@@ -79,6 +89,7 @@ impl Game {
         }
         loop {
             println!("Current Turn: {}", self.curr_turn);
+            self.print_player_text();
 
             self.do_turn();
             self.curr_turn += 1;
@@ -104,5 +115,14 @@ impl Game {
         assert!(!(num > self.bag.available_mons.len()));
         let mon = &self.bag.available_mons[num];
         self.player_mon = mon.clone();
+    }
+}
+
+impl Game {
+    pub fn print_player_text(&self) {
+        println!("Moves: ");
+        for i in self.player_mon.moves.iter() {
+            println!("{}", i);
+        }
     }
 }
