@@ -1,8 +1,8 @@
 use crate::*;
 //use serde_json::Value;
 use std::fs;
-use std::io::Write;
 use std::io;
+use std::io::Write;
 
 pub struct Game {
     pub player_mon: Mon,
@@ -108,7 +108,6 @@ impl Game {
         }
     }
 }
-
 impl Game {
     pub fn choose_mon(&mut self, mut num: usize) {
         num -= 1;
@@ -124,5 +123,15 @@ impl Game {
         for i in self.player_mon.moves.iter() {
             println!("{}", i);
         }
+    }
+}
+
+impl Game {
+    pub fn get_input(msg: &str, nl: bool) {
+        match nl {
+            true => println!("{}: ", msg),
+            false => print!("{}: ", msg),
+        }
+        io::stdout().flush().unwrap();
     }
 }
